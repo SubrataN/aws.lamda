@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: dynamodb lamda function
+
+Resources:
+  StorePersonFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+    
+    Handler: com.aws.java.dynamodb.SavePersonHandler::handleRequest
+      Runtime: java8
+      Timeout: 15
+      MemorySize: 512
+      CodeUri: https://github.com/SubrataN/aws.lamda/tree/master/dynamodb
+      Role: arn:aws:iam::774365082332:role/lamdaDynamoDB
+      Events:
+      
+      LambdaDynamoApi:
+      Type: Api
+      Properties:
+                Path: /lambdaDynamo
+                Method: POST
+      
+      
+      
