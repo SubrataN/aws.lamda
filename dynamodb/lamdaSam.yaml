@@ -6,12 +6,11 @@ Resources:
   StorePersonFunction:
     Type: AWS::Serverless::Function
     Properties:
-    
-    Handler: com.aws.java.dynamodb.SavePersonHandler::handleRequest
+      Handler: com.aws.java.dynamodb.SavePersonHandler::handleRequest
       Runtime: java8
       Timeout: 15
       MemorySize: 512
-      CodeUri: https://github.com/SubrataN/aws.lamda/tree/master/dynamodb
+      CodeUri: target/dynamodb-1.0-SNAPSHOT.jar
       Role: arn:aws:iam::774365082332:role/lamdaDynamoDB
       Events:
       
