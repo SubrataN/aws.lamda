@@ -1,14 +1,14 @@
-
 version: 0.2
 phases:
    build:
-   commands:
-      - mvn compile
-    post_build:
-    commands:
-      - echo Build completed on `date`
-      - mvn package -DskipTests
-      - aws cloudformation package --template-file lamdaSam.yaml 
+     commands:
+       - echo Build started on `date`
+       - mvn compile
+   post_build:
+     commands:
+       - echo Build completed on `date`
+       - mvn package -DskipTests
+       - aws cloudformation package --template-file lamdaSam.yaml 
                                    --s3-bucket lamda-pipeline 
                                    --output-template-file outputLamdaSam.yaml
 artifacts:
