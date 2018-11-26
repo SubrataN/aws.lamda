@@ -14,6 +14,6 @@ phases:
 artifacts:
   type: zip
   files:
-      - target/checkInInvoker-1.0-SNAPSHOT.jar
+      - target/dynamodb-1.0-SNAPSHOT.jar
       - outputLamdaSam.yaml
       - lamdaSam.yaml
