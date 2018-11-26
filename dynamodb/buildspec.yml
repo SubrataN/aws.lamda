@@ -1,10 +1,19 @@
 version:0.1
 phases:
-  install:
+    build:
     commands:
-       -aws cloudformation package --template-file lamdaSam.yaml --s3-bucket lamda-pipeline --output-template-file outputLamdaSam.yaml
+      - echo Build started on `date`
+      - mvn compile
+    post_build:
+    commands:
+      - echo Build completed on `date`
+      - mvn package -DskipTests
+      - aws cloudformation package --template-file lamdaSam.yaml 
+                                   --s3-bucket lamda-pipeline 
+                                   --output-template-file outputLamdaSam.yaml
 artifacts:
   type: zip
   files:
+      - target/checkInInvoker-1.0-SNAPSHOT.jar
       - outputLamdaSam.yaml
       - lamdaSam.yaml
