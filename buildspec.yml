@@ -8,9 +8,10 @@ phases:
      commands:
        - echo Build completed on `date`
        - mvn package -DskipTests
-       - aws cloudformation package --template-file lamdaSam.yaml
-                                    --s3-bucket lamda-pipeline
-                                    --output-template-file outputLamdaSam.yaml
+       - aws cloudformation package 
+                                   --template-file lamdaSam.yaml
+                                   --s3-bucket lamda-pipeline
+                                   --output-template-file outputLamdaSam.yaml
 artifacts:
   type: zip
   files:
